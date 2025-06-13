@@ -4,33 +4,11 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const { parse } = require('csv-parse/sync');
-const AWS = require('aws-sdk');
 
 // 你的 CSV 路徑
 const csvFile = path.join(__dirname, './feng-zhi-zhong.csv');
 // 輸出 JSON 路徑
 const outputFile = path.join(__dirname, './guild_union_rank.json');
-
-// ==== Cloudflare R2 設定 ====（這裡填入你的資訊）
-const r2 = new AWS.S3({
-  endpoint: 'https://e3471837b4c40ed2bc211028c1896020.r2.cloudflarestorage.com',
-  accessKeyId: '57e8e05cd149ff0ce744df5e728c5e2c',
-  secretAccessKey: '819bd2e5ad026f7b89ef1a0a33c3ee22467102a9ee616b7e4e313164639cca4f',
-  signatureVersion: 'v4',
-  region: 'auto'
-});
-const R2_BUCKET = 'guild-data'; // 例如 'guild-data'
-const R2_KEY = 'guild_union_rank.json'; // 上傳到 R2 的檔名
-
-function uploadJson() {
-  const data = fs.readFileSync(outputFile);
-  return r2.putObject({
-    Bucket: R2_BUCKET,
-    Key: R2_KEY,
-    Body: data,
-    ContentType: 'application/json'
-  }).promise();
-}
 
 // 設定 headers/cookie
 const COMMON_HEADERS = {
@@ -100,15 +78,6 @@ async function updateGuildInfo() {
   }
   fs.writeFileSync(outputFile, JSON.stringify(results, null, 2), 'utf-8');
   console.log(`更新完成，${results.length} 筆成員資料`);
-
-  // ======= 新增：上傳到 R2 =======
-  uploadJson()
-    .then(() => {
-      console.log('JSON 已成功上傳到 R2！');
-    })
-    .catch((err) => {
-      console.error('上傳 R2 失敗:', err);
-    });
 }
 
 // 設定每  30分鐘  跑一次
