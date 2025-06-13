@@ -1,0 +1,17 @@
+{
+  "name": "guild-cron-job",
+  "version": "1.0.0",
+  "main": "update_guild_json.cjs",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node update_guild_json.cjs"
+  },
+  "dependencies": {
+    "csv-parse": "^5.6.0",
+    "node-cron": "^4.1.0",
+    "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": ">=18.20.8"
+  }
+}
