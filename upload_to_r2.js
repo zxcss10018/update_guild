@@ -38,4 +38,4 @@ async function uploadJson() {
   }
 }
 
-uploadJson();
+module.exports = uploadJson;

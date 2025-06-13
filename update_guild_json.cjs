@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
 const { parse } = require('csv-parse/sync');
+const uploadJson = require('./upload_to_r2');
 
 // 你的 CSV 路徑
 const csvFile = path.join(__dirname, './feng-zhi-zhong.csv');
@@ -78,6 +79,7 @@ async function updateGuildInfo() {
   }
   fs.writeFileSync(outputFile, JSON.stringify(results, null, 2), 'utf-8');
   console.log(`更新完成，${results.length} 筆成員資料`);
+  await uploadJson();
 }
 
 // 設定每  30分鐘  跑一次
