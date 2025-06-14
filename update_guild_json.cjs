@@ -34,8 +34,8 @@ async function getMembersFromCSV() {
   const records = parse(content, { columns: true, skip_empty_lines: true });
   const keys = Object.keys(records[0]);
   const memberNames = records.map((row) => row[keys[0]].trim());
-  console.log('keys:', keys);
-  console.log('memberNames:', memberNames);
+  //console.log('keys:', keys);
+  //console.log('memberNames:', memberNames);
   return memberNames;
 }
 
