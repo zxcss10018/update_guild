@@ -8,6 +8,7 @@ const {
   R2_BUCKET,
   R2_ENDPOINT
 } = process.env;
+console.log("R2_BUCKET=", process.env.R2_BUCKET);
 
 // 1. 建立 S3 連線 (指向 Cloudflare R2)
 const s3 = new S3Client({
