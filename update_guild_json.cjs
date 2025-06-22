@@ -27,6 +27,7 @@ const COMMON_HEADERS = {
   'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
   'priority': 'u=1, i'
 };
+
 const COMMON_COOKIES = process.env.COMMON_COOKIES;; // 複製瀏覽器的 cookie
 
 async function getMembersFromCSV() {
