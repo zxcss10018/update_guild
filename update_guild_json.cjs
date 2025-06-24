@@ -84,6 +84,6 @@ async function updateGuildInfo() {
 }
 
 // 設定每  30分鐘  跑一次
-cron.schedule('*/30 * * * *', updateGuildInfo);
+cron.schedule('0 4 * * *', updateGuildInfo);
 // 啟動時先跑一次
 updateGuildInfo();
