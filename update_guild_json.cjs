@@ -45,7 +45,7 @@ async function updateGuildInfo() {
   const results = [];
   for (const name of members) {
     try {
-      const resp = await fetch('https://tw-event.beanfun.com/MapleStory/api/UnionWebRank/FindRank', {
+      const resp = await fetch('https://tw-event.beanfun.com/MapleStory/api/UnionWebRank/GetRank', {
         method: 'POST',
         headers: {
           ...COMMON_HEADERS,
