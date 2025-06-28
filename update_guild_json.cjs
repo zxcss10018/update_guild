@@ -61,10 +61,15 @@ async function updateGuildInfo() {
       console.log(`[${name}] 回應資料：`, json);
       const detail = json.Data;
       let imageUrl = "";
-      if (detail.CharacterLookUrl) {
+      if (detail.CharacterLookUrl && detail.CharacterLookUrl.startsWith("http")) {
+        // 優先用 API 直接給的網址
         imageUrl = detail.CharacterLookUrl;
       } else if (detail.CharacterLookCipherText) {
+        // 萬一沒給，就用 CipherText 組
         imageUrl = `https://tw-avatar-maplestory.beanfun.com/Character/${detail.CharacterLookCipherText}.png`;
+      } else {
+        // 真的什麼都沒有，給一張預設圖片（可選）
+        imageUrl = "/default-avatar.png";
       }
 
       results.push({
@@ -72,7 +77,7 @@ async function updateGuildInfo() {
         UnionLevel: detail.UnionLevel,
         JobName: detail.JobName,
         UnionTotalLevel: detail.UnionTotalLevel,
-        ImageUrl: detail.imageUrl
+        ImageUrl: imageUrl
       });
     } catch (e) {
       //console.error(`[錯誤] ${name} 查詢失敗：`, e);
