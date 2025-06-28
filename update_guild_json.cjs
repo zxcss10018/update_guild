@@ -17,6 +17,7 @@ const COMMON_HEADERS = {
   'accept-language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
   'content-type': 'application/json;charset=UTF-8',
   'origin': 'https://tw-event.beanfun.com',
+  'priority': 'u=1, i',
   'referer': 'https://tw-event.beanfun.com/MapleStory/UnionWebRank/Index.aspx',
   'sec-ch-ua': '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"',
   'sec-ch-ua-mobile': '?0',
@@ -24,8 +25,7 @@ const COMMON_HEADERS = {
   'sec-fetch-dest': 'empty',
   'sec-fetch-mode': 'cors',
   'sec-fetch-site': 'same-origin',
-  'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36',
-  'priority': 'u=1, i'
+  'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36' 
 };
 
 const COMMON_COOKIES = process.env.COMMON_COOKIES;; // 複製瀏覽器的 cookie
