@@ -72,7 +72,7 @@ async function updateGuildInfo() {
         UnionLevel: detail.UnionLevel,
         JobName: detail.JobName,
         UnionTotalLevel: detail.UnionTotalLevel,
-        ImageUrl: imageUrl
+        ImageUrl: detail.imageUrl
       });
     } catch (e) {
       //console.error(`[錯誤] ${name} 查詢失敗：`, e);
