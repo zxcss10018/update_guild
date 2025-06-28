@@ -22,10 +22,10 @@ const s3 = new S3Client({
 
 // 2. 準備要上傳的檔案
 const filePath = './guild_union_rank.json';
-const fileContent = fs.readFileSync(filePath);
 
 async function uploadJson() {
   try {
+    const fileContent = fs.readFileSync(filePath);
     const putCmd = new PutObjectCommand({
       Bucket: R2_BUCKET,
       Key: "guild_union_rank.json", // 上傳到 R2 的名稱
